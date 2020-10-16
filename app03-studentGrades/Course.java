@@ -12,6 +12,9 @@ public class Course
     private String codeNo;
     private String title;
 
+    private Module module1;
+    private Module module2;
+    
     /**
      * Constructor for objects of class Course
      */
@@ -22,6 +25,14 @@ public class Course
         this.title = title;
     }
 
+    public void addModule(Module module, int moduleNo)
+    {
+        if(moduleNo == 1)
+        {
+            this.module1 = module;
+        }
+    }
+    
     /**
      * Prints out the details of a course
      */
