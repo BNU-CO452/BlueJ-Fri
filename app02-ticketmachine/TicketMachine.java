@@ -17,17 +17,22 @@ public class TicketMachine
     private int balance;
     // The total amount of money collected by this machine.
     private int total;
-
-    private int price;
+    
+    private Ticket aylesburyTicket;
+    //todo add two more tickets
+    
+    private Ticket issuedTicket;
     
     /**
      * Create a machine that issues tickets of the given price.
      */
-    public TicketMachine(int cost)
+    public TicketMachine()
     {
         balance = 0;
         total = 0;
-        this.price = cost;
+        
+        aylesburyTicket = new Ticket("Aylesbury", 220);
+        issuedTicket = null;
     }
 
 
@@ -64,13 +69,14 @@ public class TicketMachine
      */
     public void printTicket()
     {
+        int price = issuedTicket.getPrice();
         
         if(balance >= price) 
         {
             // Simulate the printing of a ticket.
             System.out.println("##################");
             System.out.println("# The BlueJ Line");
-            System.out.println("# Ticket");
+            issuedTicket.print();
             System.out.println("# " + price + " cents.");
             System.out.println("##################");
             System.out.println();
@@ -98,5 +104,22 @@ public class TicketMachine
         amountToRefund = balance;
         balance = 0;
         return amountToRefund;
+    }
+    
+    public void printAllTickets()
+    {
+        System.out.println("The following three desitnation are available ");
+        aylesburyTicket.print();
+        System.out.println("Please select your ticket destination > ");
+    }
+    
+    public void selectAylesburyTicket()
+    {
+       issuedTicket = aylesburyTicket; 
+    }
+    
+    public void insert20pCoin()
+    {
+        balance = balance + 20;
     }
 }
