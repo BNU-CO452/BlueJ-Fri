@@ -81,11 +81,18 @@ public class Product
      * Sell one of these products.
      * An error is reported if there appears to be no stock.
      */
-    public void sellOne()
+    public void sell(int amount)
     {
-        if(quantity > 0) 
+        if(quantity >= amount && quantity > 0) 
         {
-            quantity--;
+            quantity -= amount;
+            System.out.println("Sold " + amount + " of " + name);
+        }
+        else if(amount > quantity && quantity > 0)
+        {
+            System.out.println("Insufficient Stock = " + quantity +
+                " amount ordered = " + amount);
+            quantity = 0;
         }
         else 
         {
